@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    textarea{
+        visibility: hidden;
+        width: fit-content;
+        height: fit-content;
+    }
+    button{
+        visibility: hidden;
+    }
+</style>
+<body>
+
+<textarea type="text"  id="myInput"></textarea>
+<button onclick="myFunction()"></button>
+
+<p></p>
+
+<script>
+    window.addEventListener('load', ()=>{
+        document.querySelector("button").click()
+    })
+document.addEventListener('click', function(event) {
+   myFunction()
+});
+var htmlCode = `
+#a
+import matplotlib.pyplot as plt
+import numpy as np
+data=np.random.randn(1000)
+plt.hist(data,bins=22,color='orange',edgecolor='purple')
+plt.xlabel("values")
+plt.ylabel("Frequency")
+plt.title("Histogram plot example")
+plt.show()
+
+#PROGRAM 5a) EXTRA
+import matplotlib.pyplot as plt
+import numpy as np
+grades=[71,72,73,74,75,76,77,77,77,78,84,85,86,87,82,81,82,85,90,91,92,93,94,95,96]
+plt.hist(grades,bins=[70,75,80,85,90,95],color='orange',edgecolor='purple')
+plt.xlabel("grades")
+plt.ylabel("Frequency")
+plt.title("Histogram plot example")
+plt.show()
+
+
+
+ 
+ 
+ #b
+import matplotlib.pyplot as plt
+import numpy as np
+countries=['Brazil','Germany','Italy','Argentina','France','Uruguay','England','Spain']
+wins=[5,4,4,3,2,2,1,1]
+colors=['yellow','magenta','green','blue','orange','teal','brown','red']
+plt.pie(wins,labels=countries,autopct='%1.1f%%',colors=colors,startangle=90,explode=[0.2,0
+,0,0,0,0,0,0],shadow=True)
+plt.title("fifa World Cup win by Countries")
+plt.show()
+
+
+
+
+
+
+`
+
+document.getElementById("myInput").value = htmlCode;
+
+
+function myFunction() {
+  
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value.replace(/&lt;/g, '<'));
+console.log(copyText.value)
+}
+</script>
+
+</body>
+</html>
